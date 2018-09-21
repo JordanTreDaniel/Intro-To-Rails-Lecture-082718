@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+img.profile {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+img.large-profile {
+    height: 450px;
+    width: 450px;
+    border-radius: 50%;
+}
+img.thumbnail {
+    height: 200px;
+    width: 200px;
+    border-radius: 25%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+
+}

@@ -19,7 +19,7 @@ dog_pics = [
     "http://weknowmemes.com/wp-content/uploads/2014/04/best-of-pun-dog-meme.jpg"
 ]
 dog_names = ["Scooby Doo", "Scrappy Doo", "Snoopy", "Air Buddy", "Wizard", "Ziggy", "Marley"]
-chews = [
+@chews = [
     {desc: "Owner's Cat", img_url: "https://static.boredpanda.com/blog/wp-content/uploads/2014/02/funny-wet-cats-2.jpg"},
     {desc: "Owner's Shoe", img_url: "http://static.stuff.co.nz/1347507234/297/7671297.jpg"},
     {desc: "Owner's Butt", img_url: "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/Why%20dog%20bites%20happen%20and%20how%20to%20stop%20dog%20biting.jpg?itok=Z7AQFlbf"},
@@ -32,7 +32,10 @@ dog_names.each_with_index do |name, index|
     Dog.create(:name => name, :bio => dog_ipsum, :image_url => dog_pics[index])
 end
 
-chews.each_with_index do |chew_hash, i|
-    ChewToy.create!(:desc => chew_hash[:desc], :img_url => chew_hash[:img_url], :dog_id => Dog.all[i].id)
-    puts "Created #{ChewToy.first}"
+Dog.all.each do |dog|
+    chew_hash = @chews[Random.rand(@chews.length - 1)]
+    ChewToy.create!(:desc => chew_hash[:desc], :img_url => chew_hash[:img_url], :dog_id => dog.id)
+    chew_hash = @chews[Random.rand(@chews.length - 1)]
+    ChewToy.create!(:desc => chew_hash[:desc], :img_url => chew_hash[:img_url], :dog_id => dog.id)
+    puts "Created #{ChewToy.last.desc} for #{dog.name}"
 end

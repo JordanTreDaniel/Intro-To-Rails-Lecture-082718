@@ -1,2 +1,21 @@
-<h1>Dogs#show</h1>
-<p>Find me in app/views/dogs/show.html.erb</p>
+<%= link_to 'All Dogs', dogs_path %>
+<div class="container">
+    <div>
+        <h1> <%= @dog.name %> </h1>
+        <img class="large-profile" src="<%=@dog.image_url%>">
+    </div>
+
+    <div>
+        <h3>My Chew Toys:</h3>
+        <% @dog.chew_toys.each do |ct| %>
+            <h4><%= ct.desc %></h4>
+            <img class="thumbnail" src="<%= ct.img_url %>">
+        <% end %>
+    </div>
+
+    <div>
+        <h3>About Me: </h3>
+        <p><%= @dog.bio %></p>
+    </div>
+
+</div>

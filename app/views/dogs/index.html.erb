@@ -1,2 +1,13 @@
 <h1>Dogs#index</h1>
-<p>Find me in app/views/dogs/index.html.erb</p>
+<div class="container">
+    <% @dogs.each do |dog| %>
+        <div>
+            <h2><%= dog.name %></h2>
+            <br>
+            <a href="<%=dog_path(dog)%>"">
+                <img class="profile" src="<%=dog.image_url%>"/>
+            </a>
+        </div>
+    <% end %>
+</div>
+
